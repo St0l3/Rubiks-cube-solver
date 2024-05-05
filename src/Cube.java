@@ -56,6 +56,11 @@ public class Cube {
         }
 
     }
+    public Cube(Cube c)
+    {
+        this.corners = c.corners.clone();
+        this.edges = c.edges.clone();
+    }
 
 
 
@@ -76,17 +81,51 @@ public class Cube {
              corner.orientation = 1;
     }
 
-    Cube R()
-    {
+    Cube r()
+    {   ////////////////////////////////////
         Piece corner = corners[URF];
         corners[URF] = corners[DRF];
         corners[DRF] = corners[DRB];
         corners[DRB] = corners[URB];
         corners[URB] = corner;
-        updateCornerOrientation(URF,1);
+        updateCornerOrientation(URF,2);
+        updateCornerOrientation(URB,1);
+        updateCornerOrientation(DRF,1);
+        updateCornerOrientation(DRB,2);
+        ////////////////////////////////////
 
 
         return this;
     }
+    Cube rPrime()
+    {
+        Piece corner = corners[URF];
+        corners[URF] = corners[URB];
+        corners[URB] = corners[DRB];
+        corners[DRB] = corners[DRF];
+        corners[DRF] = corner;
+        updateCornerOrientation(URF,2);
+        updateCornerOrientation(URB,1);
+        updateCornerOrientation(DRF,1);
+        updateCornerOrientation(DRB,2);
+        ////////////////////////////////////
+        return this;
 
+    }
+    Cube r2()
+    {
+        /////////////////////////////////
+        // Corners
+        swap(corners[URF],corners[DRB]);
+        swap(corners[URB],corners[DRF]);
+        ///////////////////////////////////////
+        return this;
+    }
+
+    private void swap(Piece a, Piece b)
+    {
+        Piece temp = a;
+        a = b;
+        b = temp;
+    }
 }
