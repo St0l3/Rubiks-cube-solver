@@ -12,6 +12,11 @@ public class Piece
         this.index = index;
         this.orientation = orientation;
     }
+    public Piece(Piece p){
+
+        this.index = p.index;
+        this.orientation = p.orientation;
+    }
 
     public int getIndex() {
         return index;
