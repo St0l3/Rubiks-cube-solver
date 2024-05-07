@@ -46,9 +46,24 @@ public class CubeColorModel
 
     }
 
-    private static int getCornerColor(Piece c)
+    private static int getCornerColor(Piece c, int side)
     {
+        int orientation = c.orientation;
+        if(orientation == 1){
 
+        }
+
+        return 0;
+    }
+    private static int getEdgeColor(Piece e,Boolean side)
+    {
+        int orientation = e.orientation;
+        if(true){
+            if(orientation == 1)
+                return 0;
+            return 1;
+        }
+        return orientation;
     }
 
 }
