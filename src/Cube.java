@@ -3,16 +3,7 @@ import java.util.Arrays;
 public class Cube {
     // white yellow orange red blue green
     // Osnovna orijentacija kocke je zelena ispred bela gore
-       public enum FACE{
-           UP,LEFT,FRONT,RIGHT,BACK,DOWN
-     }
-     public enum COLOR{
-           WHITE,GREEN,RED,BLUE,ORANGE,YELLOW
-     }
-     public enum EDGE{
-           UB(0),UR(1),UF(2),UL(3),FR(4),FL(5),BR(6),BL(7),DF(8),DR(9),DB(10),DL(11);
-         EDGE(int i){}
-     }
+
      public static final int ULB = 0;
     public static final int URB = 1;
     public static final int URF = 2;
@@ -34,7 +25,7 @@ public class Cube {
     public static final int DL = 9;
     public static final int DB = 10;
     public static final int DR=11;
-     public enum MOVE{
+     public static enum MOVE{
            L,LP,L2,
          R,RP,R2,
          F,FP,F2,
@@ -100,10 +91,10 @@ public class Cube {
         c.corners[DRF] = c.corners[DRB];
         c.corners[DRB] = c.corners[URB];
         c.corners[URB] = corner;
-        c.updateCornerOrientation(URF,2);
-        c.updateCornerOrientation(URB,1);
-        c.updateCornerOrientation(DRF,1);
-        c.updateCornerOrientation(DRB,2);
+        c.updateCornerOrientation(URF,1);
+        c.updateCornerOrientation(URB,2);
+        c.updateCornerOrientation(DRF,2);
+        c.updateCornerOrientation(DRB,1);
         ////////////////////////////////////
         Piece edge = edges[FR];
         c.edges[FR]= c.edges[DR];
@@ -121,10 +112,10 @@ public class Cube {
         c.corners[URB] = c.corners[DRB];
         c.corners[DRB] = c.corners[DRF];
         c.corners[DRF] = corner;
-        c.updateCornerOrientation(URF,2);
-        c.updateCornerOrientation(URB,1);
-        c.updateCornerOrientation(DRF,1);
-        c.updateCornerOrientation(DRB,2);
+        c.updateCornerOrientation(URF,1);
+        c.updateCornerOrientation(URB,2);
+        c.updateCornerOrientation(DRF,2);
+        c.updateCornerOrientation(DRB,1);
         ////////////////////////////////////
         Piece edge = edges[FR];
         c.edges[FR] = c.edges[UR];
@@ -148,11 +139,29 @@ public class Cube {
        c.swap(edges[FR],edges[BR]);
         return this;
     }
-
+    Cube l()
+    {
+        Cube c = new Cube(this);
+        // Corners;
+        Piece corner = c.corners[ULB];
+        c.corners[ULB] = c.corners[DLB];
+        c.corners[DLB] = c.corners[DLF];
+        c.corners[DLF] = c.corners [ULF];
+        c.corners[ULF] = corner;
+        c.updateCornerOrientation();
+    }
     private void swap(Piece a, Piece b)
     {
         Piece temp = a;
         a = b;
         b = temp;
+    }
+
+    public String decoder()
+    {
+        String s =
+
+
+        return null;
     }
 }
