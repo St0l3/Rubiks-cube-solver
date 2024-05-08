@@ -12,7 +12,7 @@ public class CubeColorModel
     static char cornerColors[][] = {
             {w,o,b}, // ULB  0
             {w,r,b}, // URB  1
-            {w,r,b}, // URF  2
+            {w,r,g}, // URF  2
             {w,o,g}, // ULF  3
             {y,o,g}, // DLF 4
             {y,r,g}, // DRF 5
@@ -41,29 +41,30 @@ public class CubeColorModel
         corners = c.corners;
         edges = c.edges;
 
-        String top;
-        return null;
+        String top = "     "+getCornerColor(corners[0],0) + " " + getEdgeColor(edges[0],0) + " " + getCornerColor(corners[1],0) + '\n' +
+                "     "+   getEdgeColor(edges[3],0) + " " + "W " + getEdgeColor(edges[1],0) + '\n' +
+                "     "+    getCornerColor(corners[3],0) + " " + getEdgeColor(edges[2],0) + " " +getCornerColor(corners[2],0);
+                 ;
+        return top;
+
+    }
+    public static char getEdgeColor(Piece e,int side)
+    {
+        return edgeColors[e.index][(side+e.orientation)%2];
 
     }
 
-    private static int getCornerColor(Piece c, int side)
+    private static char getCornerColor(Piece c, int side)
     {
-        int orientation = c.orientation;
-        if(orientation == 1){
-
+        for (char ch:
+             cornerColors[c.index]) {
+            System.out.print(ch);
         }
+        System.out.println();
+        System.out.print(c);
+        System.out.println();
+        return cornerColors[c.index][(side+c.orientation)%3];
 
-        return 0;
-    }
-    private static int getEdgeColor(Piece e,Boolean side)
-    {
-        int orientation = e.orientation;
-        if(true){
-            if(orientation == 1)
-                return 0;
-            return 1;
-        }
-        return orientation;
     }
 
 }

@@ -91,10 +91,10 @@ public class Cube {
         c.corners[DRF] = c.corners[DRB];
         c.corners[DRB] = c.corners[URB];
         c.corners[URB] = corner;
-        c.updateCornerOrientation(URF,1);
-        c.updateCornerOrientation(URB,2);
-        c.updateCornerOrientation(DRF,2);
-        c.updateCornerOrientation(DRB,1);
+        c.updateCornerOrientation(URF,2);
+        c.updateCornerOrientation(URB,1);
+        c.updateCornerOrientation(DRF,1);
+        c.updateCornerOrientation(DRB,2);
         ////////////////////////////////////
         Piece edge = edges[FR];
         c.edges[FR]= c.edges[DR];
@@ -112,10 +112,10 @@ public class Cube {
         c.corners[URB] = c.corners[DRB];
         c.corners[DRB] = c.corners[DRF];
         c.corners[DRF] = corner;
-        c.updateCornerOrientation(URF,1);
-        c.updateCornerOrientation(URB,2);
-        c.updateCornerOrientation(DRF,2);
-        c.updateCornerOrientation(DRB,1);
+        c.updateCornerOrientation(URF,2);
+        c.updateCornerOrientation(URB,1);
+        c.updateCornerOrientation(DRF,1);
+        c.updateCornerOrientation(DRB,2);
         ////////////////////////////////////
         Piece edge = edges[FR];
         c.edges[FR] = c.edges[UR];
@@ -148,7 +148,8 @@ public class Cube {
         c.corners[DLB] = c.corners[DLF];
         c.corners[DLF] = c.corners [ULF];
         c.corners[ULF] = corner;
-        c.updateCornerOrientation();
+       // c.updateCornerOrientation();
+        return c;
     }
     private void swap(Piece a, Piece b)
     {
@@ -157,11 +158,8 @@ public class Cube {
         b = temp;
     }
 
-    public String decoder()
-    {
-        String s =
-
-
-        return null;
+    @Override
+    public String toString() {
+        return CubeColorModel.getCubeModel(this);
     }
 }
