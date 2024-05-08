@@ -145,7 +145,7 @@ public class Cube {
         c.swap(corners[URB],corners[DRF]);
         ///////////////////////////////////////
         c.swap(edges[UR],edges[DR]);
-       c.swap(edges[FR],edges[BR]);
+        c.swap(edges[FR],edges[BR]);
         return this;
     }
 
