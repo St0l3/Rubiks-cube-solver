@@ -132,12 +132,13 @@ public class Cube {
         Cube c = new Cube(this);
         /////////////////////////////////
         // Corners
-        c.swap(corners[URF],corners[DRB]);
-        c.swap(corners[URB],corners[DRF]);
+
+        c.swapC(URF,DRB);
+        c.swapC(URB,DRF);
         ///////////////////////////////////////
-        c.swap(edges[UR],edges[DR]);
-        c.swap(edges[FR],edges[BR]);
-        return this;
+        c.swapE(UR,DR);
+        c.swapE(FR,BR);
+        return c;
     }
     Cube l()
     {
@@ -151,11 +152,17 @@ public class Cube {
        // c.updateCornerOrientation();
         return c;
     }
-    private void swap(Piece a, Piece b)
+    private void swapE(int a, int b)
     {
-        Piece temp = a;
-        a = b;
-        b = temp;
+        Piece temp = edges[a];
+        edges[a] = edges[b];
+        edges[b] = temp;
+    }
+    private void swapC(int a, int b)
+    {
+        Piece temp = corners[a];
+        corners[a] = corners[b];
+        corners[b] = temp;
     }
 
     @Override
