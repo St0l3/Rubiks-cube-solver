@@ -82,10 +82,104 @@ public class Cube {
              corner.orientation = 1;
     }
 
+    Cube dPrime(){
+        Cube c = new Cube(this);
+        // Corners
+        Piece corner = c.corners[DLB];
+        c.corners[DLB] = c.corners[DLF];
+        c.corners[DLF] = c.corners[DRF];
+        c.corners[DRF] = c.corners[DRB];
+        c.corners[DRB] = corner;
+        // Edges
+        Piece edge = c.edges[DB];
+        c.edges[DB] = c.edges[DL];
+        c.edges[DL] = c.edges[DF];
+        c.edges[DF] = c.edges[DR];
+        c.edges[DR] = edge;
+
+        return c;
+    }
+
+    Cube d2(){
+        Cube c = new Cube(this);
+        // Corners
+        c.swapC(DRF,DLB);
+        c.swapC(DRB,DLF);
+        // Edges
+        c.swapE(DR,DL);
+        c.swapE(DB,DF);
+        return c;
+
+    }
+    Cube d(){
+        Cube c = new Cube(this);
+        // Corners
+        Piece corner = c.corners[DLB];
+        c.corners[DLB] = c.corners[DRB];
+        c.corners[DRB] = c.corners[DRF];
+        c.corners[DRF] = c.corners[DLF];
+        c.corners[DLF] = corner;
+        // Edges
+        Piece edge = c.edges[DB];
+        c.edges[DB] = c.edges[DR];
+        c.edges[DR] = c.edges[DF];
+        c.edges[DF] = c.edges[DL];
+        c.edges[DL] = edge;
+
+        return c;
+    }
+    Cube u2(){
+        Cube c = new Cube(this);
+        // Corners
+        c.swapC(URF,ULB);
+        c.swapC(URB,ULF);
+        // Edges
+        c.swapE(UR,UL);
+        c.swapE(UB,UF);
+        return c;
+
+    }
+    Cube uPrime()
+    {
+        Cube c = new Cube(this);
+        // Corners
+        Piece corner = c.corners[ULB];
+        c.corners[ULB] = c.corners[URB];
+        c.corners[URB] = c.corners[URF];
+        c.corners[URF] = c.corners[ULF];
+        c.corners[ULF] = corner;
+        // Edges
+        Piece edge = c.edges[UB];
+        c.edges[UB] = c.edges[UR];
+        c.edges[UR] = c.edges[UF];
+        c.edges[UF] = c.edges[UL];
+        c.edges[UL] = edge;
+
+        return c;
+    }
+    Cube u(){
+        Cube c = new Cube(this);
+        // Corners
+        Piece corner = c.corners[ULB];
+        c.corners[ULB] = c.corners[ULF];
+        c.corners[ULF] = c.corners[URF];
+        c.corners[URF] = c.corners[URB];
+        c.corners[URB] = corner;
+        // Edges
+        Piece edge = c.edges[UB];
+        c.edges[UB] = c.edges[UL];
+        c.edges[UL] = c.edges[UF];
+        c.edges[UF] = c.edges[UR];
+        c.edges[UR] = edge;
+
+        return c;
+    }
+
+
     Cube r()
     {
         Cube c = new Cube(this);
-        ////////////////////////////////////
+        // Corners
         Piece corner = c.corners[URF];
         c.corners[URF] = c.corners[DRF];
         c.corners[DRF] = c.corners[DRB];
@@ -106,7 +200,7 @@ public class Cube {
     Cube rPrime()
     {
         Cube c = new Cube(this);
-        //////////////////////////////
+        // Corners
         Piece corner = corners[URF];
         c.corners[URF] = c.corners[URB];
         c.corners[URB] = c.corners[DRB];
@@ -116,7 +210,7 @@ public class Cube {
         c.updateCornerOrientation(URB,1);
         c.updateCornerOrientation(DRF,1);
         c.updateCornerOrientation(DRB,2);
-        ////////////////////////////////////
+        // Edges
         Piece edge = edges[FR];
         c.edges[FR] = c.edges[UR];
         c.edges[UR] = c.edges[BR];

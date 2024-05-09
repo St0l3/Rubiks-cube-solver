@@ -78,7 +78,6 @@ public class CubeColorModel
 
     private static char getCornerColor(int index, int side) {
         Piece c = corners[index];
-        System.out.println(c +"side:" +side+": " + (((side+2*c.orientation*(1+c.index%2))%3)+side*((c.index+index)%2))%3);
         return cornerColors[c.index][(((side+2*c.orientation*(1+c.index%2))%3)+side*((c.index+index)%2))%3];
 
     }
