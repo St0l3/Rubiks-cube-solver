@@ -130,12 +130,10 @@ public class Cube {
     Cube r2()
     {
         Cube c = new Cube(this);
-        /////////////////////////////////
         // Corners
-
         c.swapC(URF,DRB);
         c.swapC(URB,DRF);
-        ///////////////////////////////////////
+        // Edges
         c.swapE(UR,DR);
         c.swapE(FR,BR);
         return c;
@@ -149,7 +147,49 @@ public class Cube {
         c.corners[DLB] = c.corners[DLF];
         c.corners[DLF] = c.corners [ULF];
         c.corners[ULF] = corner;
-       // c.updateCornerOrientation();
+        c.updateCornerOrientation(ULF,1);
+        c.updateCornerOrientation(DLF,2);
+        c.updateCornerOrientation(DLB,1);
+        c.updateCornerOrientation(ULB,2);
+        // Edges
+       Piece edge = c.edges[UL];
+       c.edges[UL] = c.edges[BL];
+       c.edges[BL] = c.edges[DL];
+       c.edges[DL] = c.edges[FL];
+       c.edges[FL] = edge;
+        return c;
+    }
+    Cube lPrime()
+    {
+        Cube c = new Cube(this);
+        // Corners;
+        Piece corner = c.corners[ULB];
+        c.corners[ULB] = c.corners[ULF];
+        c.corners[ULF] = c.corners[DLF];
+        c.corners[DLF] = c.corners [DLB];
+        c.corners[DLB] = corner;
+        c.updateCornerOrientation(ULF,1);
+        c.updateCornerOrientation(DLF,2);
+        c.updateCornerOrientation(DLB,1);
+        c.updateCornerOrientation(ULB,2);
+        // Edges
+        Piece edge = c.edges[UL];
+        c.edges[UL] = c.edges[FL];
+        c.edges[FL] = c.edges[DL];
+        c.edges[DL] = c.edges[BL];
+        c.edges[BL] = edge;
+        return c;
+    }
+    Cube l2()
+    {
+        Cube c = new Cube(this);
+        //
+        // Corners
+        c.swapC(ULF,DLB);
+        c.swapC(ULB,DLF);
+        // Edges
+        c.swapE(UL,DL);
+        c.swapE(FL,BL);
         return c;
     }
     private void swapE(int a, int b)
