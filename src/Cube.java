@@ -1,4 +1,7 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Cube {
     // white yellow orange red blue green
@@ -25,7 +28,7 @@ public class Cube {
     public static final int DL = 9;
     public static final int DB = 10;
     public static final int DR=11;
-     public static enum MOVE{
+     public enum MOVE{
            L,LP,L2,
          R,RP,R2,
          F,FP,F2,
@@ -65,6 +68,68 @@ public class Cube {
 
 
 
+    public Cube move(MOVE move)
+    {
+        switch (move){
+            case L -> {
+                return this.l();
+            }
+            case LP -> {
+                return this.lPrime();
+            }
+            case L2 -> {
+                return this.l2();
+            }
+            case R -> {
+                return this.r();}
+
+            case RP -> {
+                return this.rPrime();
+            }
+            case R2 -> {
+                return this.r2();
+            }
+            case F -> {
+                return this.f();
+            }
+            case FP -> {
+                return this.fPrime();
+            }
+            case F2 -> {
+                return this.f2();
+            }
+            case B -> {
+                return  this.b();
+            }
+            case BP -> {
+                return  this.bPrime();
+            }
+            case B2 -> {
+                return  this.b2();
+            }
+            case U -> {
+                return this.u();
+            }
+            case UP -> {
+                return this.uPrime();
+            }
+            case U2 -> {
+                return  this.u2();
+            }
+            case D -> {
+                return this.d();
+            }
+            case DP -> {
+                return this.dPrime();
+            }
+            case D2 -> {
+                return this.d2();
+            }
+            default -> {
+                return null;
+            }
+        }
+    }
 
     public void updateEdgeOrientation(int index)
     {
