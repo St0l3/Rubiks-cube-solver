@@ -66,10 +66,10 @@ public class Cube {
 
 
 
-    public void updateEdgeOrientation(int index, int amount)
+    public void updateEdgeOrientation(int index)
     {
         Piece edge = edges[index];
-        edge.orientation +=amount;
+        edge.orientation +=1;
         if(edge.orientation==2)
             edge.orientation = 0;
     }
@@ -80,6 +80,131 @@ public class Cube {
              corner.orientation = 0;
          if(corner.orientation==4)
              corner.orientation = 1;
+    }
+    Cube b2()
+    {
+        Cube c = new Cube(this);
+        // Corners
+        c.swapC(ULB,DRB);
+        c.swapC(URB,DLB);
+        // Edges
+        c.swapE(UB,DB);
+        c.swapE(BR,BL);
+        return c;
+
+    }
+
+    Cube bPrime(){
+        Cube c = new Cube(this);
+        // Corners
+        Piece corner = c.corners[ULB];
+        c.corners[ULB] = c.corners[DLB];
+        c.corners[DLB] = c.corners[DRB];
+        c.corners[DRB] = c.corners[URB];
+        c.corners[URB] = corner;
+        c.updateCornerOrientation(ULB,1);
+        c.updateCornerOrientation(DLB,2);
+        c.updateCornerOrientation(DRB,1);
+        c.updateCornerOrientation(URB,2);
+        // Edges
+        Piece edge = c.edges[UB];
+        c.edges[UB] = c.edges[BL];
+        c.edges[BL] = c.edges[DB];
+        c.edges[DB] = c.edges[BR];
+        c.edges[BR] = edge;
+        c.updateEdgeOrientation(UB);
+        c.updateEdgeOrientation(BL);
+        c.updateEdgeOrientation(DB);
+        c.updateEdgeOrientation(BR);
+
+        return c;
+    }
+
+    Cube b(){
+        Cube c = new Cube(this);
+        // Corners
+        Piece corner = c.corners[ULB];
+        c.corners[ULB] = c.corners[URB];
+        c.corners[URB] = c.corners[DRB];
+        c.corners[DRB] = c.corners[DLB];
+        c.corners[DLB] = corner;
+        c.updateCornerOrientation(ULB,1);
+        c.updateCornerOrientation(DLB,2);
+        c.updateCornerOrientation(DRB,1);
+        c.updateCornerOrientation(URB,2);
+        // Edges
+        Piece edge = c.edges[UB];
+        c.edges[UB] = c.edges[BR];
+        c.edges[BR] = c.edges[DB];
+        c.edges[DB] = c.edges[BL];
+        c.edges[BL] = edge;
+        c.updateEdgeOrientation(UB);
+        c.updateEdgeOrientation(BL);
+        c.updateEdgeOrientation(DB);
+        c.updateEdgeOrientation(BR);
+
+        return c;
+    }
+    Cube fPrime(){
+        Cube c = new Cube(this);
+        // Corners
+        Piece corner = c.corners[ULF];
+        c.corners[ULF] = c.corners[URF];
+        c.corners[URF] = c.corners[DRF];
+        c.corners[DRF] = c.corners[DLF];
+        c.corners[DLF] = corner;
+        c.updateCornerOrientation(ULF,2);
+        c.updateCornerOrientation(DLF,1);
+        c.updateCornerOrientation(DRF,2);
+        c.updateCornerOrientation(URF,1);
+        // Edges
+        Piece edge = c.edges[UF];
+        c.edges[UF] = c.edges[FR];
+        c.edges[FR] = c.edges[DF];
+        c.edges[DF] = c.edges[FL];
+        c.edges[FL] = edge;
+        c.updateEdgeOrientation(UF);
+        c.updateEdgeOrientation(FL);
+        c.updateEdgeOrientation(DF);
+        c.updateEdgeOrientation(FR);
+
+        return c;
+    }
+    Cube f2(){
+        Cube c = new Cube(this);
+        // Corners
+        c.swapC(ULF,DRF);
+        c.swapC(URF,DLF);
+        // Edges
+        c.swapE(UF,DF);
+        c.swapE(FR,FL);
+        return c;
+    }
+
+    Cube f(){
+        Cube c = new Cube(this);
+        // Corners
+        Piece corner = c.corners[ULF];
+        c.corners[ULF] = c.corners[DLF];
+        c.corners[DLF] = c.corners[DRF];
+        c.corners[DRF] = c.corners[URF];
+        c.corners[URF] = corner;
+        c.updateCornerOrientation(ULF,2);
+        c.updateCornerOrientation(DLF,1);
+        c.updateCornerOrientation(DRF,2);
+        c.updateCornerOrientation(URF,1);
+        // Edges
+        Piece edge = c.edges[UF];
+        c.edges[UF] = c.edges[FL];
+        c.edges[FL] = c.edges[DF];
+        c.edges[DF] = c.edges[FR];
+        c.edges[FR] = edge;
+        c.updateEdgeOrientation(UF);
+        c.updateEdgeOrientation(FL);
+        c.updateEdgeOrientation(DF);
+        c.updateEdgeOrientation(FR);
+
+        return c;
     }
 
     Cube dPrime(){
