@@ -66,7 +66,18 @@ public class Cube {
         }
     }
 
-
+    public Boolean isSolved()
+    {
+        for(int i = 0; i < 8;i++){
+            if(corners[i].index !=i)
+                return false;
+        }
+        for(int i = 0; i < 12;i++){
+            if(edges[i].index != i)
+                return false;
+        }
+        return true;
+    }
 
     public Cube move(MOVE move)
     {
