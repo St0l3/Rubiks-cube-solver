@@ -1,10 +1,11 @@
+import java.util.ArrayList;
+import java.util.Stack;
+
 public class Main {
     public static void main(String[] args) {
-        Cube cube = new Cube().u();
-        Group g = new G2();
-        System.out.println(g.getDescription());
-        System.out.println(CubeColorModel.getCubeModel(cube));
-        //cube = Scramble.scramble("D R2 F L F' L' F' U2 F2 U' B2 U R2 F2 U' F2 D L2 F");
-        System.out.println(g.isSatisfied(cube));
+        Cube c = new Cube().r().r().u().rPrime().f().l2();
+        System.out.println(CubeColorModel.getCubeModel(c));
+        Group g = new TestGroup();
+        Solver.IDDFS(c,g,new Stack<>());
     }
 }

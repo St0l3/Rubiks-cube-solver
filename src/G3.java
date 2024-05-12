@@ -43,4 +43,9 @@ public class G3 extends Group{
     public String getDescription() {
         return "grupa 3 | permutovanje coskova u svoju parnost, permutovanje ivica u svoju liniju | {F, F', B, B', L, L', R, R'} potezi nisu dozovoljeni";
     }
+
+    @Override
+    public String getName() {
+        return "G3";
+    }
 }

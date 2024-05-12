@@ -31,4 +31,9 @@ public class G2 extends Group{
     public String getDescription() {
         return "grupa 2 | orijentisanje svih coskova i postavljanje ivica u M sloj | {F, F', B, B'} potezi nisu dozovoljeni";
     }
+
+    @Override
+    public String getName() {
+        return "G2";
+    }
 }

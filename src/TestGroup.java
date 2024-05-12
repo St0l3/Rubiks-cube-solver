@@ -1,4 +1,4 @@
-public class G1 extends  Group{
+public class TestGroup extends Group{
     @Override
     public Cube.MOVE[] getMoves() {
         Cube.MOVE moves[] = { Cube.MOVE.L, Cube.MOVE.LP, Cube.MOVE.L2,
@@ -12,20 +12,16 @@ public class G1 extends  Group{
 
     @Override
     public boolean isSatisfied(Cube c) {
-
-        for (int i = 0; i<12;i++)
-            if(c.edges[i].orientation==1)
-                return false;
-        return true;
+        return c.isSolved();
     }
 
     @Override
     public String getDescription() {
-        return "grupa 0 | orijentisanje svih ivica | svi potezi su dozvoljeni";
+        return "Test";
     }
 
     @Override
     public String getName() {
-        return "G2";
+        return "Test";
     }
 }

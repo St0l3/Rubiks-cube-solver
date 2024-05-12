@@ -19,4 +19,9 @@ public class G4 extends Group {
     public String getDescription() {
         return "grupa 4 | Trazenje resenja samo uz poteze od 180 stepeni| {F, F', B, B', L, L', R, R', D, D', U, U'} potezi nisu dozovoljeni";
     }
+
+    @Override
+    public String getName() {
+        return "G4";
+    }
 }

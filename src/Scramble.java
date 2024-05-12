@@ -1,8 +1,72 @@
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class Scramble
 {
+    public static String moveToString(Stack<Cube.MOVE> moves){
+        StringBuilder m = new StringBuilder();
+        for (Cube.MOVE move : moves) {
+            switch (move) {
+                case L -> {
+                    m.append("L ");
+                }
+                case LP -> {
+                    m.append("L' ");
+                }
+                case L2 -> {
+                    m.append("L2 ");
+                }
+                case R -> {
+                    m.append("R ");
+                }
+                case RP -> {
+                    m.append("R' ");
+                }
+                case R2 -> {
+                    m.append("R2 ");
+                }
+                case F -> {
+                    m.append("F ");
+                }
+                case FP -> {
+                    m.append("F' ");
+                }
+                case F2 -> {
+                    m.append("F2 ");
+                }
+                case B -> {
+                    m.append("B ");
+                }
+                case BP -> {
+                    m.append("B' ");
+                }
+                case B2 -> {
+                    m.append("B2 ");
+                }
+                case U -> {
+                    m.append("U ");
+                }
+                case UP -> {
+                    m.append("U' ");
+                }
+                case U2 -> {
+                    m.append("U2 ");
+                }
+                case D -> {
+                    m.append("D ");
+                }
+                case DP -> {
+                    m.append("D' ");
+                }
+                case D2 -> {
+                    m.append("D2");
+                }
+                default -> {
+                    return null;
+                }
+            }
+        }
+        return m.toString();
+    }
     public static Cube scramble(String scr)
     {
         Cube cube = new Cube();
