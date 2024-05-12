@@ -21,11 +21,11 @@ public class G1 extends  Group{
 
     @Override
     public String getDescription() {
-        return "grupa 0 | orijentisanje svih ivica | svi potezi su dozvoljeni";
+        return "grupa 1 | orijentisanje svih ivica | svi potezi su dozvoljeni";
     }
 
     @Override
     public String getName() {
-        return "G2";
+        return "G1";
     }
 }

@@ -1,7 +1,43 @@
 import java.util.*;
 
-public class Scramble
+public class Mover
 {
+
+    public static Cube applyMoves(Cube cube, String s ){
+        Cube c = new Cube(cube);
+        Queue<Cube.MOVE> moveOrder = new LinkedList<>();
+        String[] moves = s.trim().split(" ");
+        for (String move:moves) {
+            switch (move) {
+                case "R" -> moveOrder.add(Cube.MOVE.R);
+                case "R2" -> moveOrder.add(Cube.MOVE.R2);
+                case "R'" -> moveOrder.add(Cube.MOVE.RP);
+                case "L" -> moveOrder.add(Cube.MOVE.L);
+                case "L2" -> moveOrder.add(Cube.MOVE.L2);
+                case "L'" -> moveOrder.add(Cube.MOVE.LP);
+                case "F" -> moveOrder.add(Cube.MOVE.F);
+                case "F'" -> moveOrder.add(Cube.MOVE.FP);
+                case "F2" -> moveOrder.add(Cube.MOVE.F2);
+                case "B" -> moveOrder.add(Cube.MOVE.B);
+                case "B'" -> moveOrder.add(Cube.MOVE.BP);
+                case "B2" -> moveOrder.add(Cube.MOVE.B2);
+                case "U" -> moveOrder.add(Cube.MOVE.U);
+                case "U'" -> moveOrder.add(Cube.MOVE.UP);
+                case "U2" -> moveOrder.add(Cube.MOVE.U2);
+                case "D" -> moveOrder.add(Cube.MOVE.D);
+                case "D'" -> moveOrder.add(Cube.MOVE.DP);
+                case "D2" -> moveOrder.add(Cube.MOVE.D2);
+                default -> {
+                }
+            }
+        }
+        for(Cube.MOVE m : moveOrder) {
+            System.out.print(m+" ");
+            c = c.move(m);
+        }
+        System.out.println();
+        return c;
+    }
     public static String moveToString(Stack<Cube.MOVE> moves){
         StringBuilder m = new StringBuilder();
         for (Cube.MOVE move : moves) {

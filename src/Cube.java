@@ -4,7 +4,6 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class Cube {
-    // white yellow orange red blue green
     // Osnovna orijentacija kocke je zelena ispred bela gore
 
      public static final int ULB = 0;
@@ -53,19 +52,23 @@ public class Cube {
         }
 
     }
-    public Cube(Cube c)
+    public Cube(final Cube c)
     {
         corners = new Piece[8];
         edges = new Piece[12];
         for(int i = 0; i < 8;i++){
             //  System.out.println(i);
-            corners[i] = new Piece( c.corners[i]);
+            corners[i] = new Piece(c.corners[i]);
         }
         for(int i = 0; i < 12;i++){
             edges[i] = new Piece(c.edges[i]);
         }
     }
-
+    public void getCorner()
+    {
+        for (int i = 0 ; i < 8; i++)
+            System.out.println(corners[i]);
+    }
     public Boolean isSolved()
     {
         for(int i = 0; i < 8;i++){
@@ -78,7 +81,6 @@ public class Cube {
         }
         return true;
     }
-
     public Cube move(MOVE move)
     {
         switch (move){
@@ -142,14 +144,14 @@ public class Cube {
         }
     }
 
-    public void updateEdgeOrientation(int index)
+    private void updateEdgeOrientation(int index)
     {
         Piece edge = edges[index];
         edge.orientation +=1;
         if(edge.orientation==2)
             edge.orientation = 0;
     }
-    public void updateCornerOrientation(int index, int amount){
+    private void updateCornerOrientation(int index, int amount){
         Piece corner = corners[index];
          corner.orientation += amount;
          if(corner.orientation==3)
@@ -169,7 +171,6 @@ public class Cube {
         return c;
 
     }
-
     Cube bPrime(){
         Cube c = new Cube(this);
         // Corners

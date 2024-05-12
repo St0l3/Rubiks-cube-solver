@@ -23,7 +23,8 @@ public class G2 extends Group{
             return false;
         if((c.edges[Cube.DB].index != 0)&&(c.edges[Cube.DB].index != 2)&&(c.edges[Cube.DB].index != 8)&&(c.edges[Cube.DB].index != 10))
             return false;
-
+        System.out.println(c);
+        for(Piece corners : c.corners) System.out.println(corners);
         return true;
     }
 
