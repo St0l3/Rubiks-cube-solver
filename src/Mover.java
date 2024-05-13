@@ -32,10 +32,8 @@ public class Mover
             }
         }
         for(Cube.MOVE m : moveOrder) {
-            System.out.print(m+" ");
             c = c.move(m);
         }
-        System.out.println();
         return c;
     }
     public static String moveToString(Stack<Cube.MOVE> moves){

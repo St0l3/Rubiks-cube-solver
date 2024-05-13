@@ -54,8 +54,8 @@ public class Cube {
     }
     public Cube(final Cube c)
     {
-        corners = new Piece[8];
-        edges = new Piece[12];
+       corners = new Piece[8];
+       edges = new Piece[12];
         for(int i = 0; i < 8;i++){
             //  System.out.println(i);
             corners[i] = new Piece(c.corners[i]);
@@ -68,6 +68,10 @@ public class Cube {
     {
         for (int i = 0 ; i < 8; i++)
             System.out.println(corners[i]);
+    }
+    public void getEdge(){
+        for (int i = 0 ; i < 12; i++)
+            System.out.println(edges[i]);
     }
     public Boolean isSolved()
     {
@@ -392,7 +396,7 @@ public class Cube {
         c.updateCornerOrientation(DRF,1);
         c.updateCornerOrientation(DRB,2);
         ////////////////////////////////////
-        Piece edge = edges[FR];
+        Piece edge = c.edges[FR];
         c.edges[FR]= c.edges[DR];
         c.edges[DR] = c.edges[BR];
         c.edges[BR] = c.edges[UR];
@@ -403,7 +407,7 @@ public class Cube {
     {
         Cube c = new Cube(this);
         // Corners
-        Piece corner = corners[URF];
+        Piece corner = c.corners[URF];
         c.corners[URF] = c.corners[URB];
         c.corners[URB] = c.corners[DRB];
         c.corners[DRB] = c.corners[DRF];
@@ -413,7 +417,7 @@ public class Cube {
         c.updateCornerOrientation(DRF,1);
         c.updateCornerOrientation(DRB,2);
         // Edges
-        Piece edge = edges[FR];
+        Piece edge = c.edges[FR];
         c.edges[FR] = c.edges[UR];
         c.edges[UR] = c.edges[BR];
         c.edges[BR] = c.edges[DR];

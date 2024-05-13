@@ -12,9 +12,9 @@ public class G3 extends Group{
 
     @Override
     public boolean isSatisfied(Cube c) {
-        for (int i = 0; i<8;i++)
-            if((c.corners[i].index+i)%2!=0)
-                return false;
+//        for (int i = 0; i<8;i++)
+//            if((c.corners[i].index+i)%2!=0)
+//                return false;
         // S slice
         if((c.edges[Cube.UR].index != 1)&&(c.edges[Cube.UR].index != 3)&&(c.edges[Cube.UR].index != 9)&&(c.edges[Cube.UR].index != 11))
             return false;
@@ -25,13 +25,13 @@ public class G3 extends Group{
         if((c.edges[Cube.DR].index != 1)&&(c.edges[Cube.DR].index != 3)&&(c.edges[Cube.DR].index != 9)&&(c.edges[Cube.DR].index != 11))
             return false;
         // E slice
-        if((c.edges[Cube.FR].index != 7)&&(c.edges[Cube.FR].index != 4)&&(c.edges[Cube.FR].index != 5)&&(c.edges[Cube.FR].index != 6))
+        if((c.edges[Cube.UF].index != 0)&&(c.edges[Cube.UF].index != 2)&&(c.edges[Cube.UF].index != 8)&&(c.edges[Cube.UF].index != 10))
             return false;
-        if((c.edges[Cube.FL].index != 4)&&(c.edges[Cube.FL].index != 5)&&(c.edges[Cube.FL].index != 6)&&(c.edges[Cube.FL].index != 7))
+        if((c.edges[Cube.UB].index != 0)&&(c.edges[Cube.UB].index != 2)&&(c.edges[Cube.UB].index != 8)&&(c.edges[Cube.UB].index != 10))
             return false;
-        if((c.edges[Cube.BL].index != 4)&&(c.edges[Cube.BL].index != 5)&&(c.edges[Cube.BL].index != 6)&&(c.edges[Cube.BL].index != 7))
+        if((c.edges[Cube.DF].index != 0)&&(c.edges[Cube.DF].index != 2)&&(c.edges[Cube.DF].index != 8)&&(c.edges[Cube.DF].index != 10))
             return false;
-        if((c.edges[Cube.BR].index != 7)&&(c.edges[Cube.BR].index != 4)&&(c.edges[Cube.BR].index != 5)&&(c.edges[Cube.BR].index != 6))
+        if((c.edges[Cube.DB].index != 0)&&(c.edges[Cube.DB].index != 2)&&(c.edges[Cube.DB].index != 8)&&(c.edges[Cube.DB].index != 10))
             return false;
 
 

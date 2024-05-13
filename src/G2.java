@@ -15,22 +15,20 @@ public class G2 extends Group{
         for (int i = 0; i<8;i++)
             if(c.corners[i].orientation!=0)
                 return false;
-        if((c.edges[Cube.UF].index != 0)&&(c.edges[Cube.UF].index != 2)&&(c.edges[Cube.UF].index != 8)&&(c.edges[Cube.UF].index != 10))
+        if((c.edges[Cube.FR].index != 7)&&(c.edges[Cube.FR].index != 4)&&(c.edges[Cube.FR].index != 5)&&(c.edges[Cube.FR].index != 6))
             return false;
-        if((c.edges[Cube.UB].index != 0)&&(c.edges[Cube.UB].index != 2)&&(c.edges[Cube.UB].index != 8)&&(c.edges[Cube.UB].index != 10))
+        if((c.edges[Cube.FL].index != 4)&&(c.edges[Cube.FL].index != 5)&&(c.edges[Cube.FL].index != 6)&&(c.edges[Cube.FL].index != 7))
             return false;
-        if((c.edges[Cube.DF].index != 0)&&(c.edges[Cube.DF].index != 2)&&(c.edges[Cube.DF].index != 8)&&(c.edges[Cube.DF].index != 10))
+        if((c.edges[Cube.BL].index != 4)&&(c.edges[Cube.BL].index != 5)&&(c.edges[Cube.BL].index != 6)&&(c.edges[Cube.BL].index != 7))
             return false;
-        if((c.edges[Cube.DB].index != 0)&&(c.edges[Cube.DB].index != 2)&&(c.edges[Cube.DB].index != 8)&&(c.edges[Cube.DB].index != 10))
+        if((c.edges[Cube.BR].index != 7)&&(c.edges[Cube.BR].index != 4)&&(c.edges[Cube.BR].index != 5)&&(c.edges[Cube.BR].index != 6))
             return false;
-        System.out.println(c);
-        for(Piece corners : c.corners) System.out.println(corners);
         return true;
     }
 
     @Override
     public String getDescription() {
-        return "grupa 2 | orijentisanje svih coskova i postavljanje ivica u M sloj | {F, F', B, B'} potezi nisu dozovoljeni";
+        return "grupa 2 | orijentisanje svih coskova i postavljanje ivica u S sloj | {F, F', B, B'} potezi nisu dozovoljeni";
     }
 
     @Override
