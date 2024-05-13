@@ -92,7 +92,7 @@ public class Mover
                     m.append("D' ");
                 }
                 case D2 -> {
-                    m.append("D2");
+                    m.append("D2 ");
                 }
                 default -> {
                     return null;

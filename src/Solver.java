@@ -14,27 +14,30 @@ public class Solver {
         Group group = new G1();
         Stack<Cube.MOVE> G1moves = new Stack<>();
         IDDFS(c,group,G1moves);
-        System.out.println("Finished IDDFS G1");
         c = Mover.applyMoves(c, Objects.requireNonNull(Mover.moveToString(G1moves)));
-        System.out.println("G1 cube: " + c);
+        System.out.println("G1 kocka: " + c);
+
         //G2
         group = new G2();
         Stack<Cube.MOVE> G2moves = new Stack<>();
         IDDFS(c,group,G2moves);
-        System.out.println("Finished IDDFS G2");
         c = Mover.applyMoves(c, Objects.requireNonNull(Mover.moveToString(G2moves)));
-        System.out.println("G2 cube: " + c);
+        System.out.println("G2 kocka: " + c);
+
         //G3
         group = new G3();
         Stack<Cube.MOVE> G3moves = new Stack<>();
         IDDFS(c,group,G3moves);
-        System.out.println("Finished IDDFS G3");
         c = Mover.applyMoves(c, Objects.requireNonNull(Mover.moveToString(G3moves)));
 
         //G4
+        group = new G4();
+        Stack<Cube.MOVE> G4moves = new Stack<>();
+        IDDFS(c,group,G4moves);
+        c = Mover.applyMoves(c, Objects.requireNonNull(Mover.moveToString(G4moves)));
+        String solution =  Mover.moveToString(G1moves)+Mover.moveToString(G2moves)+Mover.moveToString(G3moves)+Mover.moveToString(G4moves);
+        System.out.println("Solution to the given scramble is: " + solution);
 
-//        System.out.println(c);
-//        c.getCorner();
 
 
     }
@@ -44,11 +47,10 @@ public class Solver {
         System.out.println();
         while(!IDDFS(cube,0,maxDepth,group,moves))
         {
-            System.out.println("    Pretrazivanje na dubini: " +(maxDepth+1) +", indeks poslednje pretrage: " + n);
+            System.out.println("    Zavrsena pretraga na dubini " +(maxDepth+1) );
             maxDepth++;
         }
         System.out.println("Pronadjeno resenje za " +group.getName() + ": [ " + Mover.moveToString(moves)+"]");
-        System.out.println();
 
     }
 
@@ -56,11 +58,6 @@ public class Solver {
 
     private static boolean IDDFS(final Cube cube, int depth, int maxDepth, Group group, Stack<Cube.MOVE> moves)
     {
-          n++;
-//        System.out.println();
-//        System.out.println("Depth | Max Depth | Node = " + depth +", "+ maxDepth + ", "+n);
-      //  System.out.println(cube);
-//        cube.getCorner();
         Cube.MOVE[] permittedMoves = group.getMoves();
         if(depth == maxDepth) {
             return group.isSatisfied(cube);

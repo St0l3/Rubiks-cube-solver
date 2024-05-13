@@ -1,11 +1,8 @@
 public class Piece
 {
-    // 0-11 za ivice, 0-7 za coskove
     public int index;
 
-    // 0-1 za ivice, 0-2 za coskove
     public int orientation;
-    // za coskove: 0 cosak je ispravno orijentisan,
 
     public Piece(int index, int orientation)
     {

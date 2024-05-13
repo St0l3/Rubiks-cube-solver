@@ -12,9 +12,9 @@ public class G3 extends Group{
 
     @Override
     public boolean isSatisfied(Cube c) {
-//        for (int i = 0; i<8;i++)
-//            if((c.corners[i].index+i)%2!=0)
-//                return false;
+        for (int i = 0; i<8;i++)
+            if((c.corners[i].index+i)%2!=0)
+                return false;
         // S slice
         if((c.edges[Cube.UR].index != 1)&&(c.edges[Cube.UR].index != 3)&&(c.edges[Cube.UR].index != 9)&&(c.edges[Cube.UR].index != 11))
             return false;
@@ -41,7 +41,7 @@ public class G3 extends Group{
 
     @Override
     public String getDescription() {
-        return "grupa 3 | permutovanje coskova u svoju parnost, permutovanje ivica u svoju liniju | {F, F', B, B', L, L', R, R'} potezi nisu dozovoljeni";
+        return "grupa 3 | permutovanje coskova u svoju parnost i ivica u svoje slojeve | {F, F', B, B', L, L', R, R'} potezi nisu dozovoljeni";
     }
 
     @Override

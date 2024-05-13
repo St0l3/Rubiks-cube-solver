@@ -36,7 +36,6 @@ public class Cube {
          D,DP,D2
 
      }
-
      public Piece corners[];
        public Piece edges[];
     public Cube() {
@@ -63,15 +62,6 @@ public class Cube {
         for(int i = 0; i < 12;i++){
             edges[i] = new Piece(c.edges[i]);
         }
-    }
-    public void getCorner()
-    {
-        for (int i = 0 ; i < 8; i++)
-            System.out.println(corners[i]);
-    }
-    public void getEdge(){
-        for (int i = 0 ; i < 12; i++)
-            System.out.println(edges[i]);
     }
     public Boolean isSolved()
     {

@@ -28,7 +28,7 @@ public class G2 extends Group{
 
     @Override
     public String getDescription() {
-        return "grupa 2 | orijentisanje svih coskova i postavljanje ivica u S sloj | {F, F', B, B'} potezi nisu dozovoljeni";
+        return "grupa 2 | orijentisanje coskova i permutovanje ivica u S sloj | {F, F', B, B'} potezi nisu dozovoljeni";
     }
 
     @Override

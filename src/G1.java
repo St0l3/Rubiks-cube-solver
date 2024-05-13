@@ -21,7 +21,7 @@ public class G1 extends  Group{
 
     @Override
     public String getDescription() {
-        return "grupa 1 | orijentisanje svih ivica | svi potezi su dozvoljeni";
+        return "grupa 1 | orijentisanje ivica | svi potezi su dozvoljeni";
     }
 
     @Override
