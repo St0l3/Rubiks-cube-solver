@@ -12,6 +12,8 @@ public class G4 extends Group {
 
     @Override
     public boolean isSatisfied(Cube c) {
+
+
        return c.isSolved();
     }
 

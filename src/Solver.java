@@ -2,11 +2,10 @@ import java.security.spec.RSAOtherPrimeInfo;
 import java.util.*;
 
 public class Solver {
-
-    private static int n =0;
+    
     public static void Solver(String s){
 
-        System.out.println("Scramble: " + s);
+        System.out.println("Razmesana kocka: " + s);
         Cube c = Mover.scramble(s);
         System.out.println(c);
         System.out.println();
@@ -29,14 +28,14 @@ public class Solver {
         Stack<Cube.MOVE> G3moves = new Stack<>();
         IDDFS(c,group,G3moves);
         c = Mover.applyMoves(c, Objects.requireNonNull(Mover.moveToString(G3moves)));
-
+        System.out.println(c);
         //G4
         group = new G4();
         Stack<Cube.MOVE> G4moves = new Stack<>();
         IDDFS(c,group,G4moves);
         c = Mover.applyMoves(c, Objects.requireNonNull(Mover.moveToString(G4moves)));
         String solution =  Mover.moveToString(G1moves)+Mover.moveToString(G2moves)+Mover.moveToString(G3moves)+Mover.moveToString(G4moves);
-        System.out.println("Solution to the given scramble is: " + solution);
+        System.out.println("Resenje kocke je: " + solution);
 
 
 

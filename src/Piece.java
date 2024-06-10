@@ -14,17 +14,8 @@ public class Piece
         this.index = p.index;
         this.orientation = p.orientation;
     }
-
-    public int getIndex() {
-        return index;
-    }
-
-    public int getOrientation() {
-        return orientation;
-    }
-
     @Override
     public String toString() {
-        return "Piece[" +getIndex()+"] - orientation: " + getOrientation();
+        return "Piece[" +index+"] - orientation: " + orientation;
     }
 }

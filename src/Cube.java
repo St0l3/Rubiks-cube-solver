@@ -4,42 +4,21 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class Cube {
-    // Osnovna orijentacija kocke je zelena ispred bela gore
-
-     public static final int ULB = 0;
-    public static final int URB = 1;
-    public static final int URF = 2;
-    public static final int ULF = 3;
-    public static final int DLF = 4;
-    public static final int DRF = 5;
-    public static final int DRB = 6;
-    public static final int DLB = 7;
-
-    public static final int UB = 0;
-    public static final int UR = 1;
-    public static final int UF = 2;
-    public static final int UL = 3;
-    public static final int FL = 4;
-    public static final int BL = 5;
-    public static final int BR = 6;
-    public static final int FR = 7;
-    public static final int DF = 8;
-    public static final int DL = 9;
-    public static final int DB = 10;
-    public static final int DR=11;
-     public enum MOVE{
-           L,LP,L2,
-         R,RP,R2,
-         F,FP,F2,
-         B,BP,B2,
-         U,UP,U2,
-         D,DP,D2
-
+    public static final int ULB = 0; public static final int URB = 1;
+    public static final int URF = 2; public static final int ULF = 3;
+    public static final int DLF = 4; public static final int DRF = 5;
+    public static final int DRB = 6; public static final int DLB = 7;
+    public static final int UB = 0; public static final int UR = 1;
+    public static final int UF = 2; public static final int UL = 3;
+    public static final int FL = 4; public static final int BL = 5;
+    public static final int BR = 6; public static final int FR = 7;
+    public static final int DF = 8; public static final int DL = 9;
+    public static final int DB = 10; public static final int DR=11;
+     public enum MOVE{ L,LP,L2,R,RP,R2,F,FP,F2,B,BP,B2,U,UP,U2,D,DP,D2
      }
      public Piece corners[];
        public Piece edges[];
     public Cube() {
-        //initialize corners to solved state
         corners = new Piece[8];
         for(int i = 0; i < 8;i++){
           //  System.out.println(i);
@@ -56,7 +35,6 @@ public class Cube {
        corners = new Piece[8];
        edges = new Piece[12];
         for(int i = 0; i < 8;i++){
-            //  System.out.println(i);
             corners[i] = new Piece(c.corners[i]);
         }
         for(int i = 0; i < 12;i++){
