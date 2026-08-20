@@ -17,6 +17,26 @@ Thistlethwaite's method pushes the cube through four nested groups. Each stage t
 
 `Solver.IDDFS` runs iterative deepening on each stage: search to depth 1, then depth 2, and so on until `Group.isSatisfied` returns true. `Pruner` throws away a branch when the next move repeats the face of the previous move, or when it follows the opposite face out of order (L before R, B before F, D before U). That kills the duplicate orderings that would otherwise double the tree.
 
+## Algorithms and data structures
+
+| Technique | Where | Role |
+|-----------|-------|------|
+| Thistlethwaite's algorithm (1981), a four-group coset descent | [Solver.java](src/Solver.java), [G1.java](src/G1.java)–[G4.java](src/G4.java) | Splits one huge search into four small ones by shrinking the move set at each stage |
+| Iterative deepening depth-first search | `Solver.IDDFS` | Finds the shortest sequence per stage while holding only the current path in memory |
+| Move-ordering pruning | `Pruner.isPrunable` | Rejects a successor that repeats the previous face or turns opposite faces out of a fixed order, which removes permutations of commuting moves |
+| Cubie-level state encoding | [Cube.java](src/Cube.java), [Piece.java](src/Piece.java) | Stores a permutation index and an orientation per cubie instead of 54 stickers, which shrinks the state and makes goal tests cheap |
+| Modular orientation arithmetic | `Cube.updateCornerOrientation`, `CubeColorModel.getCornerColor` | Tracks corner twist mod 3 and edge flip mod 2, then maps index and orientation back to a sticker color |
+| Persistent state, copy on move | `Cube(Cube)` copy constructor | Each of the 18 move methods returns a new cube, so backtracking costs nothing and no parent state gets corrupted |
+| Strategy pattern over an abstract `Group` | [Group.java](src/Group.java) | Hands the search a legal move set and a goal test per stage, so one search routine drives all four |
+| Stack-based backtracking | `Solver.IDDFS` | Pushes a move before recursing and pops it on failure, so the stack always holds the current candidate solution |
+| Queue-based notation parser | `Mover.scramble`, `Mover.applyMoves` | Converts a scramble string into a move queue, then folds it over a fresh cube |
+
+### Search cost
+
+The move restrictions cut the branching factor at every stage: 18 successors in G1, 14 in G2, 10 in G3, and 6 in G4. Pruning drops a quarter to a third of those before recursion, averaged over the possible previous moves. A depth-first search at depth *d* holds *d* cubes, so memory stays flat while the node count climbs.
+
+The search uses no pattern database or admissible distance estimate, which makes it IDDFS rather than IDA*. Adding a lookup table of goal distances per stage would be the next step toward Kociemba's two-phase method and its 20-move solutions.
+
 ## Cube model
 
 `Cube` tracks 8 corner and 12 edge `Piece` objects, each holding an index and an orientation. Centers stay fixed on a 3x3, so the model leaves them out.
